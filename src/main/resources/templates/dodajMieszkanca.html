@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Dodaj mieszkańca</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+</div>
+
+<div class="form-group">
+
+    <form action="/dodajMieszkanca" method="post" th:object="${mieszkanie}">
+        <input type="hidden" th:field="*{id}" placeholder="ID"/> <br/>
+        <h2>Wybierz mieszkańca:
+            <select class="form-control" name="mieszkaniec">
+                <option th:each="mieszkaniec: ${mieszkancy}" th:if="${mieszkaniec.mieszkanie==null}"
+                        th:value="${mieszkaniec.id}"
+                        th:text="${mieszkaniec.firstName}+' '+${mieszkaniec.lastName}"></option>
+            </select></h2>
+
+        <input type="submit" value="Dodaj"/>
+
+    </form>
+</div>
+
+
+</table>
+
+</body>
+</html>

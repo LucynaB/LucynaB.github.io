@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Edytuj mieszkanie</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+</div>
+
+<div class="form-group">
+
+<form action="/editMieszkanie" method="post" th:object="${mieszkanie}">
+    <input type="hidden" th:field="*{id}" placeholder="ID" /> <br/>
+    <h2>Wspólnota:
+        <select class="form-control" th:field="*{wspolnota}">
+            <option th:each="wspolnota: ${wspolnoty}" th:value="${wspolnota.id}" th:text="${wspolnota.name}" ></option>
+        </select></h2>
+    <h2>Numer<input type="number" class="form-control" th:field="*{number}" placeholder="Numer"  /></h2>
+    <h2>Powierzchnia <input type="number" class="form-control" step="0.01" th:field="*{area}" placeholder="Powierzchnia"  /> </h2>
+    <input type="submit" value="Zapisz" />
+
+</form>
+</div>
+
+
+</table>
+
+</body>
+</html>

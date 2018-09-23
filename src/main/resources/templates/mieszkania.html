@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Lista mieszkań</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/addMieszkanie">Dodaj mieszkanie</a><br>
+    <a href="/">Idź do strony głównej</a><br>
+    <a href="/wspolnoty">Idź do listy wspólnot</a><br>
+    <a href="/mieszkancy">Idź do listy mieszkańców</a><br>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+    <th>Adres</th>
+    <th>Powierzchnia <a href="/mieszkania?sort=area&order=asc">&uarr;</a>
+        <a href="/mieszkania?sort=area&order=desc">&darr;</a>
+    </th>
+    <th></th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tr th:each="mieszkanie:${mieszkania}">
+        <td><a th:href="'/mieszkanie/' + ${mieszkanie.id}"
+               th:text="${mieszkanie.wspolnota.adress}+' '+${mieszkanie.wspolnota.number}+'/'+${mieszkanie.number}">tresc
+            linku</a></td>
+        <td th:text="${mieszkanie.area} +' m2'"></td>
+
+
+        <td><a th:href="'/editMieszkanie?id=' + ${mieszkanie.id}">Edytuj</a></td>
+        <td><a th:href="'/removeMieszkanie?id=' + ${mieszkanie.id}">Usuń</a></td>
+        <td><a th:href="'/dodajMieszkanca?id=' + ${mieszkanie.id}">Dodaj mieszkańca</a></td>
+
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>

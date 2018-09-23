@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Lista wspólnot</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/addWspolnota">Dodaj wspólnotę</a><br>
+    <a href="/">Idź do strony głównej</a><br>
+    <a href="/mieszkania">Idź do listy mieszkań</a><br>
+    <a href="/mieszkancy">Idź do listy mieszkańców</a><br>
+
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <th>Nazwa</th>
+    <th>Adres</th>
+    <th>Numer</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tr th:each="wspolnota:${wspolnoty}">
+        <td><a th:href="'/wspolnota/' + ${wspolnota.id}" th:text="${wspolnota.name}">tresc linku</a></td>
+        <td th:text="${wspolnota.adress}"></td>
+        <td th:text="${wspolnota.number}"></td>
+
+
+        <td><a th:href="'/editWspolnota?id=' + ${wspolnota.id}">Edytuj</a></td>
+        <td><a th:href="'/removeWspolnota?id=' + ${wspolnota.id}">Usuń</a></td>
+
+
+    </tr>
+
+
+</table>
+
+</body>
+</html>

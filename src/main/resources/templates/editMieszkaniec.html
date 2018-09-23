@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Edytuj mieszkańca</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+</div>
+
+<div class="form-group">
+<form action="/editMieszkaniec" method="post" th:object="${mieszkaniec}">
+    <input type="hidden" th:field="*{id}" placeholder="ID" /> <br/>
+    <h2>Mieszkanie:
+        <select class="form-control" th:field="*{mieszkanie}">
+            <option th:each="mieszkanie: ${mieszkania}" th:value="${mieszkanie.id}" th:text="${mieszkanie.wspolnota.adress}+' '+${mieszkanie.wspolnota.number}+'/'+${mieszkanie.number}" ></option>
+        </select></h2>
+    <h2>Imię<input type="text" class="form-control" th:field="*{firstName}" placeholder="Imię"  /></h2>
+    <h2>Nazwisko <input type="text" class="form-control" th:field="*{lastName}" placeholder="Nazwisko"  /> </h2>
+    <h2>Płeć<select class="form-control" th:field="*{gender}">
+        <option
+                th:each="gender: ${T(lb.demo.model.Gender).values()}"
+                th:text="${gender}"
+                th:value="${gender}"></option>
+    </select> </h2>
+    <input type="submit" value="Zapisz" />
+
+</form>
+</div>
+
+
+</table>
+
+</body>
+</html>

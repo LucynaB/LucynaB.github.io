@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Szczegóły wspólnoty</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+    <a th:href="'/editWspolnota?id=' + ${wspolnota.id}">Edytuj wspólnotę</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <th>Nazwa</th>
+    <th>Adres</th>
+    <th>Łączna powierzchnia mieszkań</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tr>
+        <td th:text="${wspolnota.name}"></td>
+        <td th:text="${wspolnota.adress}+' '+${wspolnota.number}"></td>
+        <td th:text="${sumaPowierzchni} +' m2'"></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+</table>
+
+<h2>Lista mieszkań:</h2>
+<un>
+    <li th:each="mieszkanie: ${mieszkania}" th:text="${wspolnota.adress}+' '+${wspolnota.number}+'/'+${mieszkanie.number}"></li>
+</un>
+
+<h2>Lista mieszkańców:</h2>
+<un>
+    <li th:each="mieszkaniec: ${mieszkancy}" th:text="${mieszkaniec.firstName}+' '+${mieszkaniec.lastName}"></li>
+</un>
+
+</body>
+</html>

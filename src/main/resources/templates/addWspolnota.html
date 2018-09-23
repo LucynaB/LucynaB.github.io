@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Dodaj wspólnotę</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+</div>
+
+<div class="form-group">
+
+<form action="/addWspolnota" method="post" th:object="${wspolnota}">
+    <h2>Nazwa<input type="text" class="form-control"  th:field="*{name}" placeholder="Nazwa" /> </h2>
+    <h2>Adres<input type="text" class="form-control"  th:field="*{adress}" placeholder="Adres"  /> </h2>
+    <h2>Numer<input type="number" class="form-control" th:field="*{number}" placeholder="Numer"  required /> </h2>
+    <input type="submit" value="Dodaj" />
+
+</form>
+
+</div>`
+
+
+
+</body>
+</html>

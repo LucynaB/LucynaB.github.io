@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <title>Szczegóły mieszkania</title>
+</head>
+<body>
+
+<div align="right">
+    <a href="/">Idź do strony głównej</a><br>
+    <a th:href="'/editMieszkanie?id=' + ${mieszkanie.id}">Edytuj mieszkanie</a><br>
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <th>Wspólnota</th>
+    <th>Adres</th>
+    <th>Powierzchnia</th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tr>
+        <td th:text="${mieszkanie.wspolnota.name}"></td>
+        <td th:text="${mieszkanie.wspolnota.adress}+' '+${mieszkanie.wspolnota.number}+'/'+${mieszkanie.number}"></td>
+        <td th:text="${mieszkanie.area} +' m2'"></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+</table>
+
+<h2>Lista mieszkańców:</h2>
+<un>
+    <li th:each="mieszkaniec: ${mieszkancy}" th:text="${mieszkaniec.firstName}+' '+${mieszkaniec.lastName}"></li>
+</un>
+
+</body>
+</html>
